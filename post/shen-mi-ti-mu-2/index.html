@@ -1,105 +1,102 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>神秘题目2 | Gridea</title>
-<link rel="shortcut icon" href="https://github.com/2114992323/2114992323.github.io/favicon.ico?v=1616676846016">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://github.com/2114992323/2114992323.github.io/favicon.ico?v=1616677466846">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://github.com/2114992323/2114992323.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="神秘题目2 | Gridea - Atom Feed" href="https://github.com/2114992323/2114992323.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-    <meta name="description" content="签到题
-这很不签到 cjz:这水题本神仙1秒切10道{\color{White}{cjz:这水题本神仙1秒切10道}}cjz:这水题本神仙1秒切10道
-题目描述
-给定一颗 nnn 个节点的无根树，每个节点有一个权值 aia_iai​ ，你需..." />
-    <meta name="keywords" content="dp,题解" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://github.com/2114992323/2114992323.github.io">
-  <img class="avatar" src="https://github.com/2114992323/2114992323.github.io/images/avatar.png?v=1616676846016" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://github.com/2114992323/2114992323.github.io">Gridea</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              神秘题目2
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-03-25
-              </span>
-              <span>
-                10 min read
-              </span>
-              
-                <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="post-tag">
-                  # dp
-                </a>
-              
-                <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-                  # 题解
-                </a>
-              
-            </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p><font color="#FFBBFF" size="10">签到题</font></p>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>神秘题目2</h1>
+            <p class="article-meta">
+              2021-03-25
+              
+                <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="badge secondary">
+                  dp
+                </a>
+              
+                <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge secondary">
+                  题解
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p><font color="#FFBBFF" size="10">签到题</font></p>
 <p><s>这很不签到</s> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="White"><mrow><mi>c</mi><mi>j</mi><mi>z</mi><mo>:</mo><mi mathvariant="normal">这</mi><mi mathvariant="normal">水</mi><mi mathvariant="normal">题</mi><mi mathvariant="normal">本</mi><mi mathvariant="normal">神</mi><mi mathvariant="normal">仙</mi><mn>1</mn><mi mathvariant="normal">秒</mi><mi mathvariant="normal">切</mi><mn>10</mn><mi mathvariant="normal">道</mi></mrow></mstyle></mrow><annotation encoding="application/x-tex">{\color{White}{cjz:这水题本神仙1秒切10道}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord" style="color:White;"><span class="mord mathdefault" style="color:White;">c</span><span class="mord mathdefault" style="margin-right:0.05724em;color:White;">j</span><span class="mord mathdefault" style="margin-right:0.04398em;color:White;">z</span><span class="mspace" style="color:White;margin-right:0.2777777777777778em;"></span><span class="mrel" style="color:White;">:</span><span class="mspace" style="color:White;margin-right:0.2777777777777778em;"></span><span class="mord cjk_fallback" style="color:White;">这</span><span class="mord cjk_fallback" style="color:White;">水</span><span class="mord cjk_fallback" style="color:White;">题</span><span class="mord cjk_fallback" style="color:White;">本</span><span class="mord cjk_fallback" style="color:White;">神</span><span class="mord cjk_fallback" style="color:White;">仙</span><span class="mord" style="color:White;">1</span><span class="mord cjk_fallback" style="color:White;">秒</span><span class="mord cjk_fallback" style="color:White;">切</span><span class="mord" style="color:White;">1</span><span class="mord" style="color:White;">0</span><span class="mord cjk_fallback" style="color:White;">道</span></span></span></span></span></span></p>
 <h1 id="题目描述">题目描述</h1>
 <p>给定一颗 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个节点的无根树，每个节点有一个权值 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ，你需要选一个起点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> ，从这个节点开始深度优先遍历，得到一个 dfs 序：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mi>S</mi><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>3</mn></msub><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1=S,x_2,x_3...x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 。</p>
@@ -333,88 +330,198 @@ int main()
 }
 </code></pre>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a>
-<ul>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B">输入样例</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输出样例</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A8%A1%E4%B8%8E%E7%BA%A6%E5%AE%9A">数据规模与约定</a></li>
-</ul>
-</li>
-<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/">
+                <h3 class="post-title">
+                  神秘题目3
+                </h3>
+              </a>
+            </div>
+          
+        </div>
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/">
-              <h3 class="post-title">
-                神秘题目3
-              </h3>
-            </a>
-          </div>
-        
+      </div>
 
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://github.com/2114992323/2114992323.github.io/images/avatar.png?v=1616677466846" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
         
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://github.com/2114992323/2114992323.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-1/">神秘题目1</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/bu-zhi-dao-jiao-sha-de-ti-mu-1/">不知道叫啥的题目1</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/fence-obstacle-course-ti-jie/">Fence Obstacle Course 题解</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/fft-xue-xi-bi-ji/">FFT 学习笔记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/ac-zi-dong-ji/">AC自动机</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-2/">神秘题目2</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/">神秘题目3</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-4/">神秘题目4</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-5/">神秘题目5</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/abc187f-ti-jie/">ABC187F 题解</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/q_TkOdWMM/" class="badge secondary">
+          状压
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge secondary">
+          题解
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="badge secondary">
+          dp
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="badge warning">
+          数据结构
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/aFk7N3ssW/" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/g3Te24KbBL/" class="badge success">
+          多项式
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/0ZBWLLmud/" class="badge warning">
+          字符串
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/KaQ5NS-F8/" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/jFJBScHGWl/" class="badge secondary">
+          最短路
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/OnpShSAzR/" class="badge warning">
+          数论
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/YyVQHwTZB/" class="badge ">
+          整体二分
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/wx5C6iNqO/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://github.com/2114992323/2114992323.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
-      </div>
+
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+<script type="application/javascript">
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+AOS.init();
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+hljs.initHighlightingOnLoad()
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+</script>
 
-    </script>
+
+
+
   </body>
 </html>

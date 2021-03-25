@@ -1,377 +1,562 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Gridea</title>
-<link rel="shortcut icon" href="https://github.com/2114992323/2114992323.github.io/favicon.ico?v=1616676846016">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://github.com/2114992323/2114992323.github.io/favicon.ico?v=1616677466846">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://github.com/2114992323/2114992323.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Gridea - Atom Feed" href="https://github.com/2114992323/2114992323.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-    <meta name="description" content="温故而知新" />
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://github.com/2114992323/2114992323.github.io">
-  <img class="avatar" src="https://github.com/2114992323/2114992323.github.io/images/avatar.png?v=1616676846016" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://github.com/2114992323/2114992323.github.io">Gridea</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-1/">
-        <h2 class="post-title">神秘题目1</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          7 min read
-        </span>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/q_TkOdWMM/" class="post-tag">
-            # 状压
-          </a>
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
         
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
         
-      </div>
-      
-      <div class="post-abstract">
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
         
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/bu-zhi-dao-jiao-sha-de-ti-mu-1/">
-        <h2 class="post-title">不知道叫啥的题目1</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          5 min read
-        </span>
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
         
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="post-tag">
-            # dp
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/fence-obstacle-course-ti-jie/">
-        <h2 class="post-title">Fence Obstacle Course 题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          6 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="post-tag">
-            # 数据结构
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="post-tag">
-            # dp
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/fft-xue-xi-bi-ji/">
-        <h2 class="post-title">FFT 学习笔记</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          11 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/aFk7N3ssW/" class="post-tag">
-            # 学习笔记
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/g3Te24KbBL/" class="post-tag">
-            # 多项式
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/ac-zi-dong-ji/">
-        <h2 class="post-title">AC自动机</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/0ZBWLLmud/" class="post-tag">
-            # 字符串
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/aFk7N3ssW/" class="post-tag">
-            # 学习笔记
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-2/">
-        <h2 class="post-title">神秘题目2</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          10 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="post-tag">
-            # dp
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/">
-        <h2 class="post-title">神秘题目3</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          8 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="post-tag">
-            # 数据结构
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-4/">
-        <h2 class="post-title">神秘题目4</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          18 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="post-tag">
-            # 数据结构
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-5/">
-        <h2 class="post-title">神秘题目5</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          18 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/KaQ5NS-F8/" class="post-tag">
-            # 图论
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/jFJBScHGWl/" class="post-tag">
-            # 最短路
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://github.com/2114992323/2114992323.github.io/post/abc187f-ti-jie/">
-        <h2 class="post-title">ABC187F 题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-03-25
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/KaQ5NS-F8/" class="post-tag">
-            # 图论
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/q_TkOdWMM/" class="post-tag">
-            # 状压
-          </a>
-        
-          <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="post-tag">
-            # 题解
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-</div>
-
-    
-        <div class="pagination-container">
-  
-  
-    <a href="https://github.com/2114992323/2114992323.github.io/page/2" class="next-page">下一页</a>
-  
-</div>
-
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://github.com/2114992323/2114992323.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
+      </ul>
     </div>
+  </div>
+</nav>
+
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-1/">神秘题目1</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/q_TkOdWMM/" class="badge secondary">
+          状压
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge success">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-1/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/bu-zhi-dao-jiao-sha-de-ti-mu-1/">不知道叫啥的题目1</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="badge warning">
+          dp
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge warning">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/bu-zhi-dao-jiao-sha-de-ti-mu-1/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/fence-obstacle-course-ti-jie/">Fence Obstacle Course 题解</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="badge secondary">
+          数据结构
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="badge secondary">
+          dp
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge warning">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/fence-obstacle-course-ti-jie/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/fft-xue-xi-bi-ji/">FFT 学习笔记</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/aFk7N3ssW/" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/g3Te24KbBL/" class="badge secondary">
+          多项式
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/fft-xue-xi-bi-ji/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/ac-zi-dong-ji/">AC自动机</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/0ZBWLLmud/" class="badge ">
+          字符串
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/aFk7N3ssW/" class="badge warning">
+          学习笔记
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/ac-zi-dong-ji/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-2/">神秘题目2</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="badge secondary">
+          dp
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge secondary">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-2/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/">神秘题目3</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="badge ">
+          数据结构
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge success">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-4/">神秘题目4</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="badge secondary">
+          数据结构
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge warning">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-4/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-5/">神秘题目5</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/KaQ5NS-F8/" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/jFJBScHGWl/" class="badge success">
+          最短路
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge warning">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-5/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/abc187f-ti-jie/">ABC187F 题解</a>
+    </h2>
+    <p class="article-meta">
+      2021-03-25
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/KaQ5NS-F8/" class="badge warning">
+          图论
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/q_TkOdWMM/" class="badge secondary">
+          状压
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge secondary">
+          题解
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://github.com/2114992323/2114992323.github.io/post/abc187f-ti-jie/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
+        
+        <div class="row flex-edges">
+  
+  
+    <a href="https://github.com/2114992323/2114992323.github.io/page/2" class="paper-btn">
+      下一页
+    </a>
+  
+</div>
+
+      </div>
+      
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://github.com/2114992323/2114992323.github.io/images/avatar.png?v=1616677466846" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-1/">神秘题目1</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/bu-zhi-dao-jiao-sha-de-ti-mu-1/">不知道叫啥的题目1</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/fence-obstacle-course-ti-jie/">Fence Obstacle Course 题解</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/fft-xue-xi-bi-ji/">FFT 学习笔记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/ac-zi-dong-ji/">AC自动机</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-2/">神秘题目2</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-3/">神秘题目3</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-4/">神秘题目4</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/shen-mi-ti-mu-5/">神秘题目5</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://github.com/2114992323/2114992323.github.io/post/abc187f-ti-jie/">ABC187F 题解</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/q_TkOdWMM/" class="badge success">
+          状压
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/yif9OyoDPF/" class="badge secondary">
+          题解
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/6KdLEGhwXC/" class="badge ">
+          dp
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/4HLq9ulBU/" class="badge secondary">
+          数据结构
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/aFk7N3ssW/" class="badge ">
+          学习笔记
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/g3Te24KbBL/" class="badge success">
+          多项式
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/0ZBWLLmud/" class="badge warning">
+          字符串
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/KaQ5NS-F8/" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/jFJBScHGWl/" class="badge success">
+          最短路
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/OnpShSAzR/" class="badge secondary">
+          数论
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/YyVQHwTZB/" class="badge secondary">
+          整体二分
+        </a>
+      
+        <a href="https://github.com/2114992323/2114992323.github.io/tag/wx5C6iNqO/" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://github.com/2114992323/2114992323.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
   </body>
 </html>
