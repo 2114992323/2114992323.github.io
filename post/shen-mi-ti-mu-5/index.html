@@ -1,0 +1,641 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>神秘题目5 | Gridea</title>
+<link rel="shortcut icon" href="https://github.com/2114992323/github.io/favicon.ico?v=1616673673519">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://github.com/2114992323/github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="神秘题目5 | Gridea - Atom Feed" href="https://github.com/2114992323/github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="神秘题目5
+题目描述
+你被困在了一个 n×mn\times mn×m 的迷宫里面，你站在  SSS 处，出口在 TTT 处(保证 SSS 和 TTT 都是粉色砖(P))。
+红色砖(R)不能通过，你不能在上面走。
+黄砖(Y)是带电的，踩上去就..." />
+    <meta name="keywords" content="图论,最短路,题解" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://github.com/2114992323/github.io">
+  <img class="avatar" src="https://github.com/2114992323/github.io/images/avatar.png?v=1616673673519" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              神秘题目5
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-25
+              </span>
+              <span>
+                18 min read
+              </span>
+              
+                <a href="https://github.com/2114992323/github.io/tag/KaQ5NS-F8/" class="post-tag">
+                  # 图论
+                </a>
+              
+                <a href="https://github.com/2114992323/github.io/tag/jFJBScHGWl/" class="post-tag">
+                  # 最短路
+                </a>
+              
+                <a href="https://github.com/2114992323/github.io/tag/yif9OyoDPF/" class="post-tag">
+                  # 题解
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="神秘题目5">神秘题目5</h1>
+<h2 id="题目描述">题目描述</h2>
+<p>你被困在了一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 的迷宫里面，你站在  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 处，出口在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 处(保证 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 都是粉色砖(P))。</p>
+<p>红色砖(R)不能通过，你不能在上面走。</p>
+<p>黄砖(Y)是带电的，踩上去就会触电。</p>
+<p>绿砖(G)是警报砖！一旦踩上去就会...你就得与怪物战斗(花费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">t_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 秒)！</p>
+<p>橙色(O)砖是橙子味的，踩上去(花费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">t_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 秒)会使你闻起来很好吃。</p>
+<p>蓝砖(B)是水。喜欢的话可以游过去(花费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">t_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 秒)，但..如果你闻起来像橙子，食人鱼会咬你。</p>
+<p>而且，如果蓝砖(B)的旁边，靠着黄砖(Y)，跳进水里同样会触电(而且连着的水都会带电，但电只会向四周传播 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span> 个格子)！</p>
+<p>紫砖(V)特别滑！你会按照进入的方向滑向下一块砖(花费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">t_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 秒)！</p>
+<p>滑行的方向会继承给下一块相邻的紫砖(V)。</p>
+<p>当然滑到红色砖(R)或黄色砖(Y)的话人就没了(悄悄告诉你：还包括带电的蓝砖(B))。</p>
+<p>不过呢，地板<s>上滑溜溜的香皂</s>闻起来很像柠檬，食人鱼不喜欢这味道。</p>
+<p>黑色(H)砖，黑色砖(H)我忘了。</p>
+<p>紫砖(V)连着蓝砖(B)是没问题的，当然它们的组合十分复杂在最后面讲。</p>
+<p>棕色砖(Z)，啊...好像没有棕色砖。</p>
+<p>最后，粉红砖(P)。它没有任何作用，你可以随便踩(通过花费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">t_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 秒)。</p>
+<p>等等，我想起来了，黑色砖(H)可以认为是墙。你不能通过紫砖(V)滑向黑色砖(H)。它会把你挡住，你会停在紫色砖(V)上面。如果你停在了紫色砖(V)上面，你只能通过推黑色砖(H)朝反方向滑去，除非你滑行的反正前方是黑色砖(B)且它把你挡下后你才能转向，你不能在滑行的过程中推侧边的黑色砖(B)转向。地图外面可以认为全是黑色(H)砖。</p>
+<p>注意每块转的时间是通过时间，包括转向(通过黑砖(H)在紫砖(V)上面转向也是花费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">t_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 秒)。</p>
+<p>注意味道是会覆盖的，例如柠檬味的你染上了橘子味，你就失去了柠檬味~~(简称柠檬失了，即 nmsl )~~，食人鱼会咬你。</p>
+<p>求从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 最短的时间。</p>
+<p>若无法到达输出 -1。</p>
+<h2 id="输入格式">输入格式</h2>
+<p>第一行 6 个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">S_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">S_y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">T_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">T_y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，表示地图大小和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 坐标</p>
+<p>第二行 6 个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">t_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">t_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">t_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">t_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">t_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span>。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 行，每行 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 个字符的字符串，表示迷宫地图。</p>
+<h2 id="输出格式">输出格式</h2>
+<p>一个整数表示答案</p>
+<h2 id="输入样例">输入样例</h2>
+<pre><code>5 5 1 1 5 5
+1 1 1 1 1 1
+PHPPP
+PHPHP
+PHPHP
+PHPHP
+PPPHP
+</code></pre>
+<h2 id="输出样例">输出样例</h2>
+<pre><code>16
+</code></pre>
+<h3 id="更多样例">更多样例</h3>
+<p><a href="https://www.luogu.com.cn/problem/U153433">点这里</a></p>
+<h2 id="数据规模与约定">数据规模与约定</h2>
+<table>
+<thead>
+<tr>
+<th>测试点编号</th>
+<th>n<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span></th>
+<th>m<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span></th>
+<th><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span></th>
+<th>d<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span></th>
+<th>特殊性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1~3</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>没有棕色砖(好像本来就没有)</td>
+</tr>
+<tr>
+<td>4~6</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td></td>
+</tr>
+<tr>
+<td>7~11</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>没有橙色砖(O)</td>
+</tr>
+<tr>
+<td>12~15</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>没有紫色砖(V)</td>
+</tr>
+<tr>
+<td>16~20</td>
+<td>200</td>
+<td>200</td>
+<td>200</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td>21~25</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td>500</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="题解">题解</h1>
+<h2 id="1~624pts">1~6（24pts）</h2>
+<p>考虑dfs,dfs(x坐标,y坐标,气味,进来这一块的方向,时间)，就这样。</p>
+<p>坑点：</p>
+<ol>
+<li>不要忘记水导电。</li>
+<li>紫砖转向只能通过黑块。</li>
+<li>不要让紫块将你滑倒红，黄，蓝(带电)砖中。</li>
+<li>图周围一圈全是黑块。</li>
+<li>不能忘掉。</li>
+<li>气味是会覆盖的。</li>
+</ol>
+<p>但就这样还不够，考虑记忆化：</p>
+<p>对于每一个地方 (x,y) ，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mi>y</mi><mo>]</mo><mo>[</mo><mi>a</mi><mo>]</mo><mo>[</mo><mi>b</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][y][a][b]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">b</span><span class="mclose">]</span></span></span></span> 表示在这个地方你气味是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> ,进来的方向是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span> 的最短时间。</p>
+<p>1~3是给dfs写炸的和其他乱搞做法的。</p>
+<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
+#define LL long long
+using namespace std;
+const LL inf=0x3f3f3f3f3f3f3f3f;
+bool ks;
+int n,m,Sx,Sy,Tx,Ty;
+int t1,t2,t3,t4,t5,d;
+bool thisiswaterbutyoucantpassbyit[510][510];
+bool noPass[510][510];
+bool vis[510][510];
+char str[510][510];
+int f[510][510][2][6];
+int ans=2147483647;
+struct SYZ//san yuan zu
+{int x,y,z;};
+vector&lt;pair&lt;int,int&gt; &gt;R,Y,G,O,B,V,H,P,Z;
+queue&lt;pair&lt;int,int&gt; &gt;que;
+queue&lt;SYZ&gt;Sque;
+int dx[4]={-1,1,0,0},dy[4]={0,0,-1,1};
+int Time[100];
+bool js;
+void preparewater()
+{
+	memset(vis,0,sizeof vis);
+	while(!Sque.empty())Sque.pop();
+	for(int i=0;i&lt;Y.size();i++)
+		Sque.push({Y[i].first,Y[i].second,d});
+	while(!Sque.empty()){
+		SYZ N=Sque.front();Sque.pop();
+		if(!N.z)continue;
+		for(int i=0;i&lt;4;i++){
+			int xx=N.x+dx[i],yy=N.y+dy[i],zz=N.z;
+			if(str[xx][yy]=='B'&amp;&amp;!vis[xx][yy]){
+				noPass[xx][yy]=vis[xx][yy]=1;
+				Sque.push({xx,yy,zz-1});
+			}
+		}
+	}
+}
+void dfs(int x,int y,int qw,int fx,int sum)
+{
+	if(noPass[x][y])return;
+	if(str[x][y]=='B'&amp;&amp;qw)return;
+	if(sum&gt;=f[x][y][qw][fx])return;
+	f[x][y][qw][fx]=sum;
+	if(sum&gt;=ans)return;
+	if(x==Tx&amp;&amp;y==Ty)return void(ans=sum);
+	if(str[x][y]=='V'){
+		int xx=x+dx[fx],yy=y+dy[fx];
+		if(str[xx][yy]=='H'){
+			for(int i=0;i&lt;4;i++){
+				xx=x+dx[i],yy=y+dy[i];
+				if(str[x-dx[i]][y-dy[i]]!='H')continue;
+				dfs(xx,yy,0,i,sum+t4);
+			}
+		}else dfs(xx,yy,0,fx,sum+t4);
+		return;
+	}
+	for(int i=0;i&lt;4;i++){
+		int xx=x+dx[i],yy=y+dy[i];
+		dfs(xx,yy,qw|(str[x][y]=='O'),i,sum+Time[int(str[x][y])]);
+	}
+}
+int main()
+{
+	// cout&lt;&lt;(&amp;js-&amp;ks)/1024./1024&lt;&lt;'\n';
+	cin&gt;&gt;n&gt;&gt;m&gt;&gt;Sx&gt;&gt;Sy&gt;&gt;Tx&gt;&gt;Ty;
+	cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3&gt;&gt;t4&gt;&gt;t5&gt;&gt;d;
+	memset(f,0x3f,sizeof f);
+	Time['G']=t1;
+	Time['O']=t2;
+	Time['B']=t3;
+	Time['V']=t4;
+	Time['P']=t5;
+	for(int i=1;i&lt;=n;i++)
+		scanf(&quot;%s&quot;,str[i]+1);
+	for(int i=0;i&lt;=max(n,m)+2;i++)
+		str[0][i]=str[i][0]=str[n+1][i]=str[i][m+1]='H',noPass[0][i]=noPass[i][0]=noPass[n+1][i]=noPass[i][m+1]=1;
+	for(int i=1;i&lt;=n;i++)
+	for(int j=1;j&lt;=m;j++){
+		if(str[i][j]=='R')R.push_back(make_pair(i,j)),noPass[i][j]=1;
+		if(str[i][j]=='Y')Y.push_back(make_pair(i,j)),noPass[i][j]=1;
+		if(str[i][j]=='H')H.push_back(make_pair(i,j)),noPass[i][j]=1;
+	}
+	preparewater();
+	dfs(Sx,Sy,0,5,0);
+	if(ans==2147483647)cout&lt;&lt;&quot;-1\n&quot;;
+	else cout&lt;&lt;ans&lt;&lt;'\n';
+	return 0;
+}
+</code></pre>
+<p>到这估计是dfs的极限了</p>
+<h2 id="7~2576pts">7~25（76pts）</h2>
+<p>从此往下是用 dijkstra 的方法（如果你用 dfs/bfs/SPAF 过了请教教我）。</p>
+<p>当然这显然是一个简单的最短路问题。</p>
+<p>当然这需要一些技巧 ———— 拆点。</p>
+<p>将每个点拆成 （没橘子味的入点）（没橘子味的出点）（有橘子味的入点）（有橘子味的出点）</p>
+<p>对于大多数砖有</p>
+<ul>
+<li>（没橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（没橘子味的出点）。</li>
+<li>（有橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（有橘子味的出点）。</li>
+<li>（没橘子味的出点）向其他砖连一条 0 边到四周格子的（没橘子味的入点）。</li>
+<li>（有橘子味的出点）向其他砖连一条 0 边到四周格子的（有橘子味的入点）。</li>
+</ul>
+<p>当然这只是大多数砖，总有几个鬼畜的砖加大连边难度。</p>
+<p>就比如那个橘色砖，对于它有</p>
+<ul>
+<li>（没橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（有橘子味的出点）。</li>
+<li>（有橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（有橘子味的出点）。</li>
+<li>（没橘子味的出点）不要向其他砖连一条 0 边到四周格子的（没橘子味的入点）。</li>
+<li>（有橘子味的出点）向其他砖连一条 0 边到四周格子的（有橘子味的入点）。</li>
+</ul>
+<p>还有那个蓝色砖，对于它有</p>
+<ul>
+<li>（没橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（没橘子味的出点）。</li>
+<li>（有橘子味的出点）不要向其他砖连一条 0 边到四周格子的（有橘子味的入点）。</li>
+<li>（没橘子味的出点）向其他砖连一条 0 边到四周格子的（没橘子味的入点）。</li>
+</ul>
+<p>最后是哪个恶心的紫色砖，对于它有</p>
+<ul>
+<li>只考虑那些周围有黑色砖的紫色砖。</li>
+<li>由于在紫色砖上面方向不能不通过黑色砖边，那就不能向相邻的连边。</li>
+<li>你要在一个邻着黑色的紫砖建边。</li>
+<li>枚举连边方向，朝那个方向判断是不是会停下，如果会则连边，然后换一个方向。</li>
+<li>这个边的长度在枚举时算一下。</li>
+<li>他并不会TLE，不是O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>)，原因自己想。</li>
+<li>（没橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（没橘子味的出点）。</li>
+<li>（有橘子味的入点）连一条长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的有向边到（没橘子味的出点）。</li>
+</ul>
+<p>坑点</p>
+<ol>
+<li>上一档分的坑点（之前的那个）。</li>
+<li>SPAF和bfs大概率会TLE，用dijkstra。</li>
+</ol>
+<p>代码很好写，真的。</p>
+<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
+#define Graph(x)for(int i=last[x],y=edge[i].ver;i;i=edge[i].next,y=edge[i].ver)
+#define LL long long
+using namespace std;
+const LL inf=0x3f3f3f3f3f3f3f3f;
+bool ks;
+int n,m,Sx,Sy,Tx,Ty;
+int t1,t2,t3,t4,t5,d;
+int last[1000010],num;
+int id[510][510][4],idcnt;//in out orangein orangeout
+bool noPass[510][510];
+bool vis[510][510];
+char str[510][510];
+LL dis[1000010];
+int DUI[1000010],wz[1000010],NUM=0;
+struct EDGE
+{int ver,len,next;}edge[8000010];
+struct SYZ//san yuan zu
+{int x,y,z;};
+vector&lt;pair&lt;int,int&gt; &gt;R,Y,G,O,B,V,H,P,Z;
+queue&lt;SYZ&gt;Sque;
+int dx[4]={-1,1,0,0},dy[4]={0,0,-1,1};
+bool js;
+void add(int U,int V,int L)
+{edge[++num]=(EDGE){V,L,last[U]};last[U]=num;}
+void preparewater()
+{
+	memset(vis,0,sizeof vis);
+	while(!Sque.empty())Sque.pop();
+	for(int i=0;i&lt;Y.size();i++)
+		Sque.push({Y[i].first,Y[i].second,d});
+	while(!Sque.empty()){
+		SYZ N=Sque.front();Sque.pop();
+		if(!N.z)continue;
+		for(int i=0;i&lt;4;i++){
+			int xx=N.x+dx[i],yy=N.y+dy[i],zz=N.z;
+			if(str[xx][yy]=='B'&amp;&amp;!vis[xx][yy]){
+				noPass[xx][yy]=vis[xx][yy]=1;
+				Sque.push({xx,yy,zz-1});
+			}
+		}
+	}
+}
+void connect_edge()
+{
+	for(int i=1;i&lt;=n;i++)
+	for(int j=1;j&lt;=m;j++){
+		if(noPass[i][j])continue;
+		if(str[i][j]=='G'){
+			add(id[i][j][0],id[i][j][1],t1);add(id[i][j][2],id[i][j][3],t1);
+		}else if(str[i][j]=='O'){
+			add(id[i][j][0],id[i][j][3],t2);add(id[i][j][2],id[i][j][3],t2);
+		}else if(str[i][j]=='B'){
+			add(id[i][j][0],id[i][j][1],t3);
+		}else if(str[i][j]=='V'){
+			continue;
+		}else if(str[i][j]=='P'){
+			add(id[i][j][0],id[i][j][1],t5);add(id[i][j][2],id[i][j][3],t5);
+		}
+		for(int k=0;k&lt;4;k++){
+			int xx=i+dx[k],yy=j+dy[k];
+			if(noPass[xx][yy])continue;
+			if(str[xx][yy]=='V')continue;
+			add(id[i][j][1],id[xx][yy][0],0);
+			add(id[i][j][3],id[xx][yy][2],0);
+		}
+	}
+}
+void deal_with_V()
+{
+	for(int i=1;i&lt;=n;i++)
+	for(int j=1;j&lt;=m;j++){
+		if(noPass[i][j])continue;
+		if(str[i][j]!='V'){
+			for(int k=0;k&lt;4;k++){
+				int xx=i+dx[k],yy=j+dy[k];
+				if(noPass[xx][yy]||str[xx][yy]!='V')continue;
+				int l=1;
+				for(;;l++){
+					if(noPass[i+(l+1)*dx[k]][j+(l+1)*dy[k]])break;
+					if(str[i+l*dx[k]][j+l*dy[k]]!='V')break;
+				}
+				if(str[i+l*dx[k]][j+l*dy[k]]=='V'){
+					if(noPass[i+(l+1)*dx[k]][j+(l+1)*dy[k]]&amp;&amp;(str[i+(l+1)*dx[k]][j+(l+1)*dy[k]]=='B'||str[i+(l+1)*dx[k]][j+(l+1)*dy[k]]=='R'||str[i+(l+1)*dx[k]][j+(l+1)*dy[k]]=='Y'))
+						continue;
+					//hua (shui li dian si)/(hong se zhuan kuai)
+				}
+				add(id[i][j][1],id[i+l*dx[k]][j+l*dy[k]][0],t4*l-t4);
+				add(id[i][j][3],id[i+l*dx[k]][j+l*dy[k]][0],t4*l-t4);
+			}
+		}else{
+			add(id[i][j][0],id[i][j][1],t4);
+			add(id[i][j][2],id[i][j][1],t4);
+			for(int k=0;k&lt;4;k++){
+				int xx=i+dx[k],yy=j+dy[k];
+				if(str[i-dx[k]][j-dy[k]]!='H'||noPass[xx][yy])continue;
+				int l=1;
+				for(;;l++){
+					if(noPass[i+(l+1)*dx[k]][j+(l+1)*dy[k]])break;
+					if(str[i+l*dx[k]][j+l*dy[k]]!='V')break;
+				}
+				if(str[i+l*dx[k]][j+l*dy[k]]=='V'){
+					if(noPass[i+(l+1)*dx[k]][j+(l+1)*dy[k]]&amp;&amp;(str[i+(l+1)*dx[k]][j+(l+1)*dy[k]]=='B'||str[i+(l+1)*dx[k]][j+(l+1)*dy[k]]=='R'||str[i+(l+1)*dx[k]][j+(l+1)*dy[k]]=='Y'))
+						continue;
+					//hua (shui li dian si)/(hong se zhuan kuai)
+				}
+				add(id[i][j][1],id[i+l*dx[k]][j+l*dy[k]][0],t4*l-t4);
+				add(id[i][j][3],id[i+l*dx[k]][j+l*dy[k]][0],t4*l-t4);
+			}
+		}
+	}
+}
+void UP(int x)
+{
+	while(x&gt;1&amp;&amp;dis[DUI[x]]&lt;dis[DUI[x&gt;&gt;1]]){
+		swap(DUI[x],DUI[x&gt;&gt;1]);
+		swap(wz[DUI[x]],wz[DUI[x&gt;&gt;1]]);
+		x&gt;&gt;=1;
+	}
+}
+void DOWN(int p)
+{
+	int s=p&lt;&lt;1;
+	while(s&lt;=NUM){
+		if(s&lt;NUM&amp;&amp;dis[DUI[s]]&gt;dis[DUI[s+1]])s++;
+		if(dis[DUI[p]]&lt;=dis[DUI[s]])break;
+		swap(DUI[p],DUI[s]);
+		swap(wz[DUI[p]],wz[DUI[s]]);
+		p=s;s&lt;&lt;=1;
+	}
+}
+void ADD(int x)
+{
+	DUI[++NUM]=x;
+	UP(wz[x]=NUM);
+}
+void DEL()
+{
+	DUI[1]=DUI[NUM--];
+	DOWN(wz[DUI[1]]=1);
+}
+void dijkstra(int Ss)
+{
+	memset(dis,0x3f,sizeof dis);
+	memset(wz,0,sizeof wz);
+	dis[Ss]=NUM=0;
+	ADD(Ss);
+	while(NUM){
+		int x=DUI[1];DEL();
+		Graph(x){
+			if(dis[y]&lt;=dis[x]+edge[i].len)continue;
+			dis[y]=dis[x]+edge[i].len;
+			if(wz[y])UP(wz[y]);
+			else ADD(y);
+		}
+	}
+}
+int main()
+{
+	// cout&lt;&lt;(&amp;js-&amp;ks)/1024./1024&lt;&lt;'\n';
+	cin&gt;&gt;n&gt;&gt;m&gt;&gt;Sx&gt;&gt;Sy&gt;&gt;Tx&gt;&gt;Ty;
+	cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3&gt;&gt;t4&gt;&gt;t5&gt;&gt;d;
+	for(int i=1;i&lt;=n;i++)
+		scanf(&quot;%s&quot;,str[i]+1);
+	for(int i=0;i&lt;=max(n,m)+2;i++)
+		str[0][i]=str[i][0]=str[n+1][i]=str[i][m+1]='H',noPass[0][i]=noPass[i][0]=noPass[n+1][i]=noPass[i][m+1]=1;
+	for(int i=1;i&lt;=n;i++)
+	for(int j=1;j&lt;=m;j++){
+		id[i][j][0]=++idcnt;
+		id[i][j][1]=++idcnt;
+		id[i][j][2]=++idcnt;
+		id[i][j][3]=++idcnt;
+		if(str[i][j]=='R')R.push_back(make_pair(i,j)),noPass[i][j]=1;
+		if(str[i][j]=='Y')Y.push_back(make_pair(i,j)),noPass[i][j]=1;
+		if(str[i][j]=='H')H.push_back(make_pair(i,j)),noPass[i][j]=1;
+	}
+	preparewater();
+	connect_edge();
+	deal_with_V();
+	dijkstra(id[Sx][Sy][0]);
+	if(min(dis[id[Tx][Ty][0]],dis[id[Tx][Ty][2]])==inf)cout&lt;&lt;&quot;-1\n&quot;;
+	else cout&lt;&lt;min(dis[id[Tx][Ty][0]],dis[id[Tx][Ty][2]])&lt;&lt;'\n';
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E7%A5%9E%E7%A7%98%E9%A2%98%E7%9B%AE5">神秘题目5</a>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B">输入样例</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输出样例</a>
+<ul>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E6%A0%B7%E4%BE%8B">更多样例</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A8%A1%E4%B8%8E%E7%BA%A6%E5%AE%9A">数据规模与约定</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a>
+<ul>
+<li><a href="#1~624pts">1~6（24pts）</a></li>
+<li><a href="#7~2576pts">7~25（76pts）</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://github.com/2114992323/github.io/post/abc187f-ti-jie/">
+              <h3 class="post-title">
+                ABC187F 题解
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://github.com/2114992323/github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,521 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>神秘题目4 | Gridea</title>
+<link rel="shortcut icon" href="https://github.com/2114992323/github.io/favicon.ico?v=1616673673519">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://github.com/2114992323/github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="神秘题目4 | Gridea - Atom Feed" href="https://github.com/2114992323/github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="神秘题目4
+题目描述
+给定二维平面内不同颜色的 nnn 个点，你需要写一个程序完成一下2种操作。
+
+将第 kkk 个点的坐标改成 (x,y)(x,y)(x,y)，颜色改成 ccc 。
+求第 LLL 到 RRR 个点中,两两不同颜色的点的曼哈..." />
+    <meta name="keywords" content="数据结构,题解" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://github.com/2114992323/github.io">
+  <img class="avatar" src="https://github.com/2114992323/github.io/images/avatar.png?v=1616673673519" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              神秘题目4
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-25
+              </span>
+              <span>
+                18 min read
+              </span>
+              
+                <a href="https://github.com/2114992323/github.io/tag/4HLq9ulBU/" class="post-tag">
+                  # 数据结构
+                </a>
+              
+                <a href="https://github.com/2114992323/github.io/tag/yif9OyoDPF/" class="post-tag">
+                  # 题解
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="神秘题目4">神秘题目4</h1>
+<h2 id="题目描述">题目描述</h2>
+<p>给定二维平面内不同颜色的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个点，你需要写一个程序完成一下2种操作。</p>
+<ol>
+<li>将第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 个点的坐标改成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>，颜色改成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span> 。</li>
+<li>求第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">L</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 个点中,两两不同颜色的点的曼哈顿距离最大值(若不存在输出0)。</li>
+</ol>
+<h2 id="输入格式">输入格式</h2>
+<p>第一行 2 个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 行，每行 3 个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x,y,c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span></span></span></span> 描述第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个点的坐标和颜色。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 行，每行第一个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>p</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">opt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span></span></span></span></p>
+<ul>
+<li>若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>p</mi><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">opt=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，接下来 3 个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x,y,c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span></span></span></span> 表示一次修改操作</li>
+<li>若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>p</mi><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">opt=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>，接下来 2 个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo separator="true">,</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">L,R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span>  表示一次查询操作</li>
+</ul>
+<h2 id="输出格式">输出格式</h2>
+<p>若干行每行一个整数，对应一次查询操作的答案。</p>
+<h2 id="样例输入">样例输入</h2>
+<pre><code>5 5
+-5 1 6
+2 1 3
+-5 7 3
+-5 1 7
+9 -9 9
+1 1 -1 7 3
+2 1 2
+2 1 4
+1 4 1 -9 5
+2 2 5
+</code></pre>
+<h2 id="样例输出">样例输出</h2>
+<pre><code>0
+10
+30
+</code></pre>
+<h2 id="数据范围与约定">数据范围与约定</h2>
+<p>对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">%</span></span></span></span> 的数据 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><mi>y</mi><mi mathvariant="normal">∣</mi><mo separator="true">,</mo><mi>c</mi><mo>&lt;</mo><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n,m,|x|,|y|,c&lt;=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span></p>
+<p>对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>30</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">30\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mord">%</span></span></span></span> 的数据	<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>&lt;</mo><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">n,m&lt;=1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span></p>
+<p>另有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">%</span></span></span></span> 的数据 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>&lt;</mo><mo>=</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>&lt;</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">0&lt;=x,y&lt;=5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span> 任何时刻点的颜色各不相同,无修改</p>
+<p>另有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">%</span></span></span></span> 的数据 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x=y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></p>
+<p>另有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">10\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">%</span></span></span></span> 的数据 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi>y</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|x|=|y|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span></span></span></span></p>
+<p>对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">100\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">%</span></span></span></span> 的数据 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>&lt;</mo><mo>=</mo><mn>1</mn><mi>e</mi><mn>5</mn><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><mi>y</mi><mi mathvariant="normal">∣</mi><mo separator="true">,</mo><mi>c</mi><mo>&lt;</mo><mo>=</mo><mn>1</mn><mi>e</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">n,m&lt;=1e5,|x|,|y|,c&lt;=1e9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord mathdefault">e</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault">e</span><span class="mord">9</span></span></span></span></p>
+<p>时间限制：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi>s</mi></mrow><annotation encoding="application/x-tex">1s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault">s</span></span></span></span></p>
+<p>空间限制：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>256</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">256MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></p>
+<h1 id="题解">题解</h1>
+<h2 id="10分做法">10分做法</h2>
+<p>有脚就行</p>
+<h2 id="30分做法">30分做法</h2>
+<p>有手就行</p>
+<h2 id="另外10分">另外10分</h2>
+<p>注意到坐标值域非常小而且没修改颜色还都不一样，那这就很好办了。直接差分求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mo separator="true">,</mo><mo>(</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x+y),(x-y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> 的值有多少个，而不是求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>有多少个，最后扫描一下就行了。复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>q</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span> 。</p>
+<h2 id="另外10分-2">另外10分</h2>
+<p>线段树维护  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>−</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max(x)-min(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，注意要留一个次大值和次小值(其颜色若和最大最小值同色，顺延到次次大值，次次小值)处理 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">min(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span> 这两个点颜色相同这种情况。</p>
+<h2 id="另外10分-3">另外10分</h2>
+<p><s>还真不会针对这一档的做法</s></p>
+<h2 id="满分做法">满分做法</h2>
+<p>线段树维护 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mo>−</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mo separator="true">,</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo>)</mo><mo>−</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">max(max(x+y)-min(x+y),max(x-y)-min(x-y))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span> ，注意要留一个次大值和次小值(其颜色若和最大最小值同色，顺延到次次大值，次次小值)处理 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>x</mi><mo>±</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">max(x\pm y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">±</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>x</mi><mo>±</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">min(x \pm y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">±</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> 这两个点颜色相同这种情况，代码非常简单。</p>
+<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
+#define LL long long
+using namespace std;
+const int inf=1&lt;&lt;30;
+int n,m,C[100010];
+LL X[100010],Y[100010];
+int addcMAX,addcMax,addcMIN,addcMin;
+LL addMAX,addMax,addMIN,addMin;
+int subcMAX,subcMax,subcMIN,subcMin;
+LL subMAX,subMax,subMIN,subMin;
+struct SegmentTree
+{int l,r,addcMAX,addcMax,addcMIN,addcMin,subcMAX,subcMax,subcMIN,subcMin;LL addMAX,addMax,addMIN,addMin,subMAX,subMax,subMIN,subMin,x,y;}st[400010];
+inline int read()
+{
+	int x=0;bool w=0;char ch=0;
+	while(!isdigit(ch)){w|=ch=='-';ch=getchar();}
+	while(isdigit(ch)){x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);ch=getchar();}
+	return w?-x:x;
+}
+void upd(int p)
+{
+	st[p].addMAX=st[p].addMax=-inf;
+	st[p].addMIN=st[p].addMin=inf;
+	st[p].addcMAX=st[p].addcMax=st[p].addcMIN=st[p].addcMin=-10086;
+	if(st[p&lt;&lt;1].addMAX&gt;st[p].addMAX){
+		if(st[p&lt;&lt;1].addcMAX!=st[p].addcMAX)
+			st[p].addMax=st[p].addMAX,st[p].addcMax=st[p].addcMAX;
+		st[p].addMAX=st[p&lt;&lt;1].addMAX;
+		st[p].addcMAX=st[p&lt;&lt;1].addcMAX;
+	}
+	if(st[p&lt;&lt;1].addMAX&gt;st[p].addMax&amp;&amp;st[p&lt;&lt;1].addMAX&lt;=st[p].addMAX&amp;&amp;st[p&lt;&lt;1].addcMAX!=st[p].addcMAX){
+		st[p].addMax=st[p&lt;&lt;1].addMAX;
+		st[p].addcMax=st[p&lt;&lt;1].addcMAX;
+	}
+	if(st[p&lt;&lt;1].addMax&gt;st[p].addMax&amp;&amp;st[p&lt;&lt;1].addcMax!=st[p].addcMAX){
+		st[p].addMax=st[p&lt;&lt;1].addMax;
+		st[p].addcMax=st[p&lt;&lt;1].addcMax;
+	}
+	if(st[p&lt;&lt;1].addMIN&lt;st[p].addMIN){
+		if(st[p&lt;&lt;1].addcMIN!=st[p].addcMIN)
+			st[p].addMin=st[p].addMIN,st[p].addcMin=st[p].addcMIN;
+		st[p].addMIN=st[p&lt;&lt;1].addMIN;
+		st[p].addcMIN=st[p&lt;&lt;1].addcMIN;
+	}
+	if(st[p&lt;&lt;1].addMIN&lt;st[p].addMin&amp;&amp;st[p&lt;&lt;1].addMIN&gt;=st[p].addMIN&amp;&amp;st[p&lt;&lt;1].addcMIN!=st[p].addcMIN){
+		st[p].addMin=st[p&lt;&lt;1].addMIN;
+		st[p].addcMin=st[p&lt;&lt;1].addcMIN;
+	}
+	if(st[p&lt;&lt;1].addMin&lt;st[p].addMin&amp;&amp;st[p&lt;&lt;1].addcMin!=st[p].addcMIN){
+		st[p].addMin=st[p&lt;&lt;1].addMin;
+		st[p].addcMin=st[p&lt;&lt;1].addcMin;
+	}
+
+	if(st[p&lt;&lt;1|1].addMAX&gt;st[p].addMAX){
+		if(st[p&lt;&lt;1|1].addcMAX!=st[p].addcMAX)
+			st[p].addMax=st[p].addMAX,st[p].addcMax=st[p].addcMAX;
+		st[p].addMAX=st[p&lt;&lt;1|1].addMAX;
+		st[p].addcMAX=st[p&lt;&lt;1|1].addcMAX;
+	}
+	if(st[p&lt;&lt;1|1].addMAX&gt;st[p].addMax&amp;&amp;st[p&lt;&lt;1|1].addMAX&lt;=st[p].addMAX&amp;&amp;st[p&lt;&lt;1|1].addcMAX!=st[p].addcMAX){
+		st[p].addMax=st[p&lt;&lt;1|1].addMAX;
+		st[p].addcMax=st[p&lt;&lt;1|1].addcMAX;
+	}
+	if(st[p&lt;&lt;1|1].addMax&gt;st[p].addMax&amp;&amp;st[p&lt;&lt;1|1].addcMax!=st[p].addcMAX){
+		st[p].addMax=st[p&lt;&lt;1|1].addMax;
+		st[p].addcMax=st[p&lt;&lt;1|1].addcMax;
+	}
+	if(st[p&lt;&lt;1|1].addMIN&lt;st[p].addMIN){
+		if(st[p&lt;&lt;1|1].addcMIN!=st[p].addcMIN)
+			st[p].addMin=st[p].addMIN,st[p].addcMin=st[p].addcMIN;
+		st[p].addMIN=st[p&lt;&lt;1|1].addMIN;
+		st[p].addcMIN=st[p&lt;&lt;1|1].addcMIN;
+	}
+	if(st[p&lt;&lt;1|1].addMIN&lt;st[p].addMin&amp;&amp;st[p&lt;&lt;1|1].addMIN&gt;=st[p].addMIN&amp;&amp;st[p&lt;&lt;1|1].addcMIN!=st[p].addcMIN){
+		st[p].addMin=st[p&lt;&lt;1|1].addMIN;
+		st[p].addcMin=st[p&lt;&lt;1|1].addcMIN;
+	}
+	if(st[p&lt;&lt;1|1].addMin&lt;st[p].addMin&amp;&amp;st[p&lt;&lt;1|1].addcMin!=st[p].addcMIN){
+		st[p].addMin=st[p&lt;&lt;1|1].addMin;
+		st[p].addcMin=st[p&lt;&lt;1|1].addcMin;
+	}
+
+	st[p].subMAX=st[p].subMax=-inf;
+	st[p].subMIN=st[p].subMin=inf;
+	st[p].subcMAX=st[p].subcMax=st[p].subcMIN=st[p].subcMin=-10086;
+	if(st[p&lt;&lt;1].subMAX&gt;st[p].subMAX){
+		if(st[p&lt;&lt;1].subcMAX!=st[p].subcMAX)
+			st[p].subMax=st[p].subMAX,st[p].subcMax=st[p].subcMAX;
+		st[p].subMAX=st[p&lt;&lt;1].subMAX;
+		st[p].subcMAX=st[p&lt;&lt;1].subcMAX;
+	}
+	if(st[p&lt;&lt;1].subMAX&gt;st[p].subMax&amp;&amp;st[p&lt;&lt;1].subMAX&lt;=st[p].subMAX&amp;&amp;st[p&lt;&lt;1].subcMAX!=st[p].subcMAX){
+		st[p].subMax=st[p&lt;&lt;1].subMAX;
+		st[p].subcMax=st[p&lt;&lt;1].subcMAX;
+	}
+	if(st[p&lt;&lt;1].subMax&gt;st[p].subMax&amp;&amp;st[p&lt;&lt;1].subcMax!=st[p].subcMAX){
+		st[p].subMax=st[p&lt;&lt;1].subMax;
+		st[p].subcMax=st[p&lt;&lt;1].subcMax;
+	}
+	if(st[p&lt;&lt;1].subMIN&lt;st[p].subMIN){
+		if(st[p&lt;&lt;1].subcMIN!=st[p].subcMIN)
+			st[p].subMin=st[p].subMIN,st[p].subcMin=st[p].subcMIN;
+		st[p].subMIN=st[p&lt;&lt;1].subMIN;
+		st[p].subcMIN=st[p&lt;&lt;1].subcMIN;
+	}
+	if(st[p&lt;&lt;1].subMIN&lt;st[p].subMin&amp;&amp;st[p&lt;&lt;1].subMIN&gt;=st[p].subMIN&amp;&amp;st[p&lt;&lt;1].subcMIN!=st[p].subcMIN){
+		st[p].subMin=st[p&lt;&lt;1].subMIN;
+		st[p].subcMin=st[p&lt;&lt;1].subcMIN;
+	}
+	if(st[p&lt;&lt;1].subMin&lt;st[p].subMin&amp;&amp;st[p&lt;&lt;1].subcMin!=st[p].subcMIN){
+		st[p].subMin=st[p&lt;&lt;1].subMin;
+		st[p].subcMin=st[p&lt;&lt;1].subcMin;
+	}
+
+	if(st[p&lt;&lt;1|1].subMAX&gt;st[p].subMAX){
+		if(st[p&lt;&lt;1|1].subcMAX!=st[p].subcMAX)
+			st[p].subMax=st[p].subMAX,st[p].subcMax=st[p].subcMAX;
+		st[p].subMAX=st[p&lt;&lt;1|1].subMAX;
+		st[p].subcMAX=st[p&lt;&lt;1|1].subcMAX;
+	}
+	if(st[p&lt;&lt;1|1].subMAX&gt;st[p].subMax&amp;&amp;st[p&lt;&lt;1|1].subMAX&lt;=st[p].subMAX&amp;&amp;st[p&lt;&lt;1|1].subcMAX!=st[p].subcMAX){
+		st[p].subMax=st[p&lt;&lt;1|1].subMAX;
+		st[p].subcMax=st[p&lt;&lt;1|1].subcMAX;
+	}
+	if(st[p&lt;&lt;1|1].subMax&gt;st[p].subMax&amp;&amp;st[p&lt;&lt;1|1].subcMax!=st[p].subcMAX){
+		st[p].subMax=st[p&lt;&lt;1|1].subMax;
+		st[p].subcMax=st[p&lt;&lt;1|1].subcMax;
+	}
+	if(st[p&lt;&lt;1|1].subMIN&lt;st[p].subMIN){
+		if(st[p&lt;&lt;1|1].subcMIN!=st[p].subcMIN)
+			st[p].subMin=st[p].subMIN,st[p].subcMin=st[p].subcMIN;
+		st[p].subMIN=st[p&lt;&lt;1|1].subMIN;
+		st[p].subcMIN=st[p&lt;&lt;1|1].subcMIN;
+	}
+	if(st[p&lt;&lt;1|1].subMIN&lt;st[p].subMin&amp;&amp;st[p&lt;&lt;1|1].subMIN&gt;=st[p].subMIN&amp;&amp;st[p&lt;&lt;1|1].subcMIN!=st[p].subcMIN){
+		st[p].subMin=st[p&lt;&lt;1|1].subMIN;
+		st[p].subcMin=st[p&lt;&lt;1|1].subcMIN;
+	}
+	if(st[p&lt;&lt;1|1].subMin&lt;st[p].subMin&amp;&amp;st[p&lt;&lt;1|1].subcMin!=st[p].subcMIN){
+		st[p].subMin=st[p&lt;&lt;1|1].subMin;
+		st[p].subcMin=st[p&lt;&lt;1|1].subcMin;
+	}
+}
+void build(int p,int l,int r)
+{
+	st[p].l=l;st[p].r=r;
+	st[p].addMAX=st[p].addMax=-inf;
+	st[p].addMIN=st[p].addMin=inf;
+	st[p].addcMAX=st[p].addcMax=st[p].addcMIN=st[p].addcMin=-10086;
+
+	st[p].subMAX=st[p].subMax=-inf;
+	st[p].subMIN=st[p].subMin=inf;
+	st[p].subcMAX=st[p].subcMax=st[p].subcMIN=st[p].subcMin=-10086;
+	if(l==r){
+		st[p].addcMAX=st[p].addcMIN=C[l];
+		st[p].addMAX=X[l]+Y[l];
+		st[p].addMIN=X[l]+Y[l];
+		//st[p&lt;&lt;1].addMAX=st[p&lt;&lt;1].addMax=st[p&lt;&lt;1|1].addMAX=st[p&lt;&lt;1|1].addMax=-inf;
+		//st[p&lt;&lt;1].addMIN=st[p&lt;&lt;1].addMin=st[p&lt;&lt;1|1].addMIN=st[p&lt;&lt;1|1].addMin=inf;
+		st[p].subcMAX=st[p].subcMIN=C[l];
+		st[p].subMAX=X[l]-Y[l];
+		st[p].subMIN=X[l]-Y[l];
+		//st[p&lt;&lt;1].subMAX=st[p&lt;&lt;1].subMax=st[p&lt;&lt;1|1].subMAX=st[p&lt;&lt;1|1].subMax=-inf;
+		//st[p&lt;&lt;1].subMIN=st[p&lt;&lt;1].subMin=st[p&lt;&lt;1|1].subMIN=st[p&lt;&lt;1|1].subMin=inf;
+		return;
+	}
+	int mid=(l+r)&gt;&gt;1;
+	build(p&lt;&lt;1,l,mid);
+	build(p&lt;&lt;1|1,mid+1,r);
+	upd(p);
+}
+void change(int p,int pos)
+{
+	if(st[p].l==st[p].r){
+		st[p].addcMAX=st[p].addcMIN=C[pos];
+		st[p].addMAX=X[pos]+Y[pos];
+		st[p].addMIN=X[pos]+Y[pos];
+
+		st[p].subcMAX=st[p].subcMIN=C[pos];
+		st[p].subMAX=X[pos]-Y[pos];
+		st[p].subMIN=X[pos]-Y[pos];
+		return;
+	}
+	int mid=(st[p].l+st[p].r)&gt;&gt;1;
+	if(pos&lt;=mid)change(p&lt;&lt;1,pos);
+	else change(p&lt;&lt;1|1,pos);
+	upd(p);
+}
+void ask(int p,int l,int r)
+{
+	if(l&lt;=st[p].l&amp;&amp;st[p].r&lt;=r){
+		if(st[p].addMAX&gt;addMAX){
+			if(st[p].addcMAX!=addcMAX)addMax=addMAX,addcMax=addcMAX;
+			addMAX=st[p].addMAX;addcMAX=st[p].addcMAX;
+		}
+		if(st[p].addMAX&gt;addMax&amp;&amp;st[p].addMAX&lt;=addMAX&amp;&amp;st[p].addcMAX!=addcMAX)
+			addMax=st[p].addMAX,addcMax=st[p].addcMAX;
+		if(st[p].addMax&gt;addMax&amp;&amp;st[p].addcMax!=addcMAX)
+			addMax=st[p].addMax,addcMax=st[p].addcMax;
+		if(st[p].addMIN&lt;addMIN){
+			if(st[p].addcMIN!=addcMIN)addMin=addMIN,addcMin=addcMIN;
+			addMIN=st[p].addMIN;addcMIN=st[p].addcMIN;
+		}
+		if(st[p].addMIN&lt;addMin&amp;&amp;st[p].addMIN&gt;=addMIN&amp;&amp;st[p].addcMIN!=addcMIN)
+			addMin=st[p].addMIN,addcMin=st[p].addcMIN;
+		if(st[p].addMin&lt;addMin&amp;&amp;st[p].addcMin!=addcMIN)
+			addMin=st[p].addMin,addcMin=st[p].addcMin;
+
+		if(st[p].subMAX&gt;subMAX){
+			if(st[p].subcMAX!=subcMAX)subMax=subMAX,subcMax=subcMAX;
+			subMAX=st[p].subMAX;subcMAX=st[p].subcMAX;
+		}
+		if(st[p].subMAX&gt;subMax&amp;&amp;st[p].subMAX&lt;=subMAX&amp;&amp;st[p].subcMAX!=subcMAX)
+			subMax=st[p].subMAX,subcMax=st[p].subcMAX;
+		if(st[p].subMax&gt;subMax&amp;&amp;st[p].subcMax!=subcMAX)
+			subMax=st[p].subMax,subcMax=st[p].subcMax;
+		if(st[p].subMIN&lt;subMIN){
+			if(st[p].subcMIN!=subcMIN)subMin=subMIN,subcMin=subcMIN;
+			subMIN=st[p].subMIN;subcMIN=st[p].subcMIN;
+		}
+		if(st[p].subMIN&lt;subMin&amp;&amp;st[p].subMIN&gt;=subMIN&amp;&amp;st[p].subcMIN!=subcMIN)
+			subMin=st[p].subMIN,subcMin=st[p].subcMIN;
+		if(st[p].subMin&lt;subMin&amp;&amp;st[p].subcMin!=subcMIN)
+			subMin=st[p].subMin,subcMin=st[p].subcMin;
+		return;
+	}
+	int mid=(st[p].l+st[p].r)&gt;&gt;1;
+	if(l&lt;=mid)ask(p&lt;&lt;1,l,r);
+	if(r&gt;mid)ask(p&lt;&lt;1|1,l,r);
+}
+LL calc()
+{
+	LL temp=0;
+	if(addcMAX!=addcMIN)temp=max(temp,addMAX-addMIN);
+	if(addcMAX!=addcMin)temp=max(temp,addMAX-addMin);
+	if(addcMax!=addcMIN)temp=max(temp,addMax-addMIN);
+	if(subcMAX!=subcMIN)temp=max(temp,subMAX-subMIN);
+	if(subcMAX!=subcMin)temp=max(temp,subMAX-subMin);
+	if(subcMax!=subcMIN)temp=max(temp,subMax-subMIN);
+	return temp;
+}
+int main()
+{
+	freopen(&quot;dis.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;dis.out&quot;,&quot;w&quot;,stdout);
+	n=read();m=read();
+	for(int i=1;i&lt;=n;i++)
+		X[i]=read(),Y[i]=read(),C[i]=read();
+	build(1,1,n);
+	while(m--){
+		int opt=read(),l=read(),r=read();
+		if(opt&amp;1){
+			X[l]=r;Y[l]=read();C[l]=read();
+			change(1,l);
+		}else{
+			addMAX=addMax=-inf;addMIN=addMin=inf;
+			addcMAX=addcMax=addcMIN=addcMin=-10086;
+			subMAX=subMax=-inf;subMIN=subMin=inf;
+			subcMAX=subcMax=subcMIN=subcMin=-10086;
+			ask(1,l,r);
+			printf(&quot;%lld\n&quot;,calc());
+		}
+	}
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E7%A5%9E%E7%A7%98%E9%A2%98%E7%9B%AE4">神秘题目4</a>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式</a></li>
+<li><a href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5">样例输入</a></li>
+<li><a href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA">样例输出</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E4%B8%8E%E7%BA%A6%E5%AE%9A">数据范围与约定</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a>
+<ul>
+<li><a href="#10%E5%88%86%E5%81%9A%E6%B3%95">10分做法</a></li>
+<li><a href="#30%E5%88%86%E5%81%9A%E6%B3%95">30分做法</a></li>
+<li><a href="#%E5%8F%A6%E5%A4%9610%E5%88%86">另外10分</a></li>
+<li><a href="#%E5%8F%A6%E5%A4%9610%E5%88%86-2">另外10分</a></li>
+<li><a href="#%E5%8F%A6%E5%A4%9610%E5%88%86-3">另外10分</a></li>
+<li><a href="#%E6%BB%A1%E5%88%86%E5%81%9A%E6%B3%95">满分做法</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://github.com/2114992323/github.io/post/shen-mi-ti-mu-5/">
+              <h3 class="post-title">
+                神秘题目5
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://github.com/2114992323/github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
